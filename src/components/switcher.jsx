@@ -45,19 +45,20 @@ export default function Switcher() {
     }
   };
 
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-    if (typeof window !== "undefined") {
-      const scrollToTop = () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      };
+  const scrollToTop = () => {
+    if (typeof window === "undefined") return;
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
+  useEffect(() => {
+    // TODO: windo use is not suported on SSR, so we should find new forms to handle this
+    if (typeof window === "undefined") return;
+    if (typeof window !== "undefined") {
       window.addEventListener("scroll", toggleVisible);
 
-      // Cleanup event listener
       return () => {
         window.removeEventListener("scroll", toggleVisible);
       };

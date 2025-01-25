@@ -27,6 +27,7 @@ export default function Navbar({ navclass, navlight, manuclass }) {
   let userRef = useRef(null);
 
   useEffect(() => {
+    // TODO: windo use is not suported on SSR, so we should find new forms to handle this
     if (typeof window !== "undefined") {
       const handleScroll = () => {
         const isScrolling = window.scrollY > 50;
