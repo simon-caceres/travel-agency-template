@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 
-import about from "../assets/images/about.jpg";
-import map from "../assets/images/map-plane-big.png";
+import about from "@/assets/images/about.jpg";
+import map from "@/assets/images/map-plane-big.png";
 
-import { FiUsers, FiGlobe } from "../assets/icons/vander";
+import { FiUsers, FiGlobe } from "@/assets/icons/vander";
 
 import CountUp from "react-countup";
 
