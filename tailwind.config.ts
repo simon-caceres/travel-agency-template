@@ -6,7 +6,6 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class',
   important: true,
   theme: {
     screens: {
@@ -97,7 +96,7 @@ export default {
   },
   plugins: [
     require("@tailwindcss/forms")({
-      strategy: 'class', // only generate classes
+      strategy: 'class',
     }),
 ],
 } satisfies Config;

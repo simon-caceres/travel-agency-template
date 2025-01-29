@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-import logoDark from "../assets/images/logo-dark.png";
-import logoLight from "../assets/images/logo-light.png";
-import logoWhite from "../assets/images/logo-white.png";
-import userImg from "../assets/images/client/16.jpg";
+import logoDark from "@/assets/images/logo-dark.png";
+import logoLight from "@/assets/images/logo-light.png";
+import logoWhite from "@/assets/images/logo-white.png";
+import userImg from "@/assets/images/client/16.jpg";
 
 import {
   FiSearch,
@@ -13,12 +14,12 @@ import {
   FiHelpCircle,
   FiSettings,
   FiLogOut,
-} from "../assets/icons/vander";
+} from "@/assets/icons/vander";
 
 export default function Navbar({ navclass, navlight, manuclass }) {
   let [scrolling, setScrolling] = useState(false);
   let [isToggle, setToggle] = useState(false);
-  let [manu, setManu] = useState("");
+  let [manu, setManu] = useState<string>("");
   let [subManu, setSubManu] = useState("");
   let [isOpen, setIsOpen] = useState(false);
   let [userManu, setUserManu] = useState(false);
@@ -34,7 +35,7 @@ export default function Navbar({ navclass, navlight, manuclass }) {
         setScrolling(isScrolling);
       };
 
-      const handleOutsideClick = (event) => {
+      const handleOutsideClick = (event: any) => {
         if (
           dropdownRef.current &&
           !dropdownRef.current.contains(event.target)
@@ -76,21 +77,25 @@ export default function Navbar({ navclass, navlight, manuclass }) {
         {navlight && (
           <Link className="logo" href="/">
             <span className="inline-block dark:hidden">
-              <img src={logoDark} className="h-7 l-dark" alt="" />
-              <img src={logoLight} className="h-7 l-light" alt="" />
+              <Image src={logoDark} className="h-7 l-dark" alt="" />
+              <Image src={logoLight} className="h-7 l-light" alt="" />
             </span>
-            <img src={logoWhite} className="hidden dark:inline-block" alt="" />
+            <Image
+              src={logoWhite}
+              className="hidden dark:inline-block"
+              alt=""
+            />
           </Link>
         )}
         {!navlight && (
           <Link className="logo" href="/">
             <div>
-              <img
+              <Image
                 src={logoDark}
                 className="h-7 inline-block dark:hidden"
                 alt=""
               />
-              <img
+              <Image
                 src={logoWhite}
                 className="h-7 hidden dark:inline-block"
                 alt=""
@@ -127,7 +132,6 @@ export default function Navbar({ navclass, navlight, manuclass }) {
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <FiSearch className="size-5 dark-icon"></FiSearch>
                 <FiSearch className="size-5 white-icon text-white"></FiSearch>
               </button>
               {isOpen && (
@@ -181,7 +185,7 @@ export default function Navbar({ navclass, navlight, manuclass }) {
               onClick={() => setUserManu(!userManu)}
             >
               <span className="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md border border-red-500 bg-red-500 text-white">
-                <img src={userImg} className="rounded-md" alt="" />
+                <Image src={userImg} className="rounded-md" alt="" />
               </span>
             </button>
             {userManu && (
