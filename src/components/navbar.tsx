@@ -16,7 +16,13 @@ import {
   FiLogOut,
 } from "@/assets/icons/vander";
 
-export default function Navbar({ navclass, navlight, manuclass }) {
+interface NavbarPros {
+  navclass: any;
+  navlight: any;
+  manuclass: any;
+}
+
+export default function Navbar({ navclass, navlight, manuclass }: NavbarPros) {
   let [scrolling, setScrolling] = useState(false);
   let [isToggle, setToggle] = useState(false);
   let [manu, setManu] = useState<string>("");
@@ -24,8 +30,8 @@ export default function Navbar({ navclass, navlight, manuclass }) {
   let [isOpen, setIsOpen] = useState(false);
   let [userManu, setUserManu] = useState(false);
 
-  let dropdownRef = useRef(null);
-  let userRef = useRef(null);
+  const dropdownRef = useRef<HTMLLIElement | null>(null);
+  const userRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     // TODO: windo use is not suported on SSR, so we should find new forms to handle this
@@ -35,17 +41,22 @@ export default function Navbar({ navclass, navlight, manuclass }) {
         setScrolling(isScrolling);
       };
 
-      const handleOutsideClick = (event: any) => {
+      const handleOutsideClick = (event: MouseEvent) => {
         if (
           dropdownRef.current &&
+          event.target instanceof Node &&
           !dropdownRef.current.contains(event.target)
         ) {
           setIsOpen(false);
         }
       };
 
-      const userOutsideClick = (e) => {
-        if (userRef.current && !userRef.current.contains(e.target)) {
+      const userOutsideClick = (event: MouseEvent) => {
+        if (
+          userRef.current &&
+          event.target instanceof Node &&
+          !userRef.current.contains(event.target)
+        ) {
           setUserManu(false);
         }
       };
@@ -253,7 +264,7 @@ export default function Navbar({ navclass, navlight, manuclass }) {
               <Link
                 href=""
                 onClick={() =>
-                  setSubManu(setManu === "/index-item" ? "" : "/index-item")
+                  setSubManu(manu === "/index-item" ? "" : "/index-item")
                 }
               >
                 Hero

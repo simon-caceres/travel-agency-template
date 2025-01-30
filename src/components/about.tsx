@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import about from "@/assets/images/about.jpg";
 import map from "@/assets/images/map-plane-big.png";
@@ -14,7 +15,7 @@ export default function About() {
       <div className="grid md:grid-cols-12 grid-cols-1 items-center gap-6 relative">
         <div className="md:col-span-5">
           <div className="relative">
-            <img
+            <Image
               src={about}
               className="mx-auto rounded-3xl shadow dark:shadow-gray-700 w-[90%]"
               alt=""
@@ -71,7 +72,7 @@ export default function About() {
         </div>
 
         <div className="absolute bottom-0 start-1/3 -z-1">
-          <img src={map} className="lg:w-[600px] w-96" alt="" />
+          <Image src={map} className="lg:w-[600px] w-96" alt="" />
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FiSun, FiMoon } from "../assets/icons/vander";
 export default function Switcher() {
   let [visible, setVisible] = useState(false);
-  let htmlTag;
+  let htmlTag: any;
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -13,7 +13,7 @@ export default function Switcher() {
     }
   }, []);
 
-  const changeTheme = () => {
+  const changeTheme = (e: any) => {
     if (htmlTag) {
       if (htmlTag.className.includes("dark")) {
         htmlTag.className = "light";
@@ -26,7 +26,7 @@ export default function Switcher() {
   const modeChange = () => {
     if (htmlTag) {
       const switcherRtl = document.getElementById("switchRtl");
-      if (switcherRtl.innerText === "LTR") {
+      if (switcherRtl && switcherRtl.innerText === "LTR") {
         htmlTag.dir = "ltr";
       } else {
         htmlTag.dir = "rtl";
@@ -73,7 +73,7 @@ export default function Switcher() {
             type="checkbox"
             className="checkbox opacity-0 absolute"
             id="chk"
-            onChange={(e) => changeTheme(e)}
+            onChange={(e: any) => changeTheme(e)}
           />
           <label
             className="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8"

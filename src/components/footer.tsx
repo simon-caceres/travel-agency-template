@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import logoLight from "../assets/images/logo-light.png";
 
@@ -16,7 +17,7 @@ export default function Footer() {
               <div className="grid md:grid-cols-12 grid-cols-1 gap-6">
                 <div className="lg:col-span-3 md:col-span-12">
                   <Link href="#" className="text-[22px] focus:outline-none">
-                    <img src={logoLight} alt="" />
+                    <Image src={logoLight} alt="" />
                   </Link>
                   <p className="mt-6 text-gray-300">
                     Planning for a trip? We will organize your trip with the
@@ -132,7 +133,7 @@ export default function Footer() {
                             className="ps-12 rounded w-full py-2 px-3 h-10 bg-gray-800 border-0 text-gray-100 focus:shadow-none focus:ring-0 placeholder:text-gray-200 outline-none"
                             placeholder="Email"
                             name="email"
-                            required=""
+                            required
                           />
                         </div>
                       </div>
